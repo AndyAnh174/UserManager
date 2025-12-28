@@ -62,7 +62,6 @@ public partial class GrantPrivilegeForm : Form
             BackColor = Color.White,
             Padding = new Padding(20)
         };
-        this.Controls.Add(panelHeader);
 
         // Title
         var lblTitle = new Label
@@ -121,7 +120,6 @@ public partial class GrantPrivilegeForm : Form
             Dock = DockStyle.Fill,
             Font = new Font("Segoe UI", 10)
         };
-        this.Controls.Add(tabControl);
 
         // Tab 1: System Privileges
         var tabSystem = new TabPage("🔐 System Privilege");
@@ -145,7 +143,6 @@ public partial class GrantPrivilegeForm : Form
             Height = 60,
             BackColor = Color.FromArgb(248, 248, 248)
         };
-        this.Controls.Add(panelButtons);
 
         var btnGrant = new Button
         {
@@ -177,8 +174,10 @@ public partial class GrantPrivilegeForm : Form
         btnClose.Click += (s, e) => this.Close();
         panelButtons.Controls.Add(btnClose);
 
-        panelButtons.BringToFront();
-        panelHeader.BringToFront();
+        // Thêm controls theo thứ tự đúng: Fill trước, Bottom và Top sau
+        this.Controls.Add(tabControl);
+        this.Controls.Add(panelButtons);
+        this.Controls.Add(panelHeader);
     }
 
     private void SetupSystemPrivilegeTab(TabPage tab)
