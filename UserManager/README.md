@@ -160,5 +160,3 @@ Hoặc mở solution trong Visual Studio và nhấn F5.
 - Session được quản lý qua `AuthService.CurrentSession`
 - Tất cả các hành động đều kiểm tra quyền qua `AuthService.HasPrivilege()`
 
-## 📄 License
-MIT License - Bài Tập Lớn Môn Bảo Mật CSDL
