@@ -33,7 +33,6 @@ public partial class PrivilegeListControl : UserControl
             Height = 60,
             BackColor = Color.White
         };
-        this.Controls.Add(panelHeader);
 
         // Title
         var lblTitle = new Label
@@ -53,7 +52,6 @@ public partial class PrivilegeListControl : UserControl
             Height = 50,
             BackColor = Color.FromArgb(248, 248, 248)
         };
-        this.Controls.Add(panelToolbar);
 
         // Search TextBox
         txtSearch = new TextBox
@@ -106,6 +104,7 @@ public partial class PrivilegeListControl : UserControl
             BorderStyle = BorderStyle.None,
             CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal,
             ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None,
+            ColumnHeadersVisible = true,
             EnableHeadersVisualStyles = false,
             SelectionMode = DataGridViewSelectionMode.FullRowSelect,
             MultiSelect = false,
@@ -130,10 +129,10 @@ public partial class PrivilegeListControl : UserControl
         contextMenu.Items.Add("❌ Revoke", null, (s, e) => RevokePrivilege());
         dgvPrivileges.ContextMenuStrip = contextMenu;
 
+        // Thêm controls theo thứ tự: Fill trước, Top sau
         this.Controls.Add(dgvPrivileges);
-
-        panelToolbar.BringToFront();
-        panelHeader.BringToFront();
+        this.Controls.Add(panelToolbar);
+        this.Controls.Add(panelHeader);
     }
 
     private DataTable? _originalData;
