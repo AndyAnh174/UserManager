@@ -39,7 +39,6 @@ public partial class UserReportControl : UserControl
             Height = 80,
             BackColor = Color.White
         };
-        this.Controls.Add(panelHeader);
 
         // Title
         var lblTitle = new Label
@@ -108,7 +107,6 @@ public partial class UserReportControl : UserControl
             Dock = DockStyle.Fill,
             Font = new Font("Segoe UI", 10)
         };
-        this.Controls.Add(tabControl);
 
         // Tab 1: Thông tin cơ bản
         var tabInfo = new TabPage("👤 Thông tin cơ bản");
@@ -134,7 +132,9 @@ public partial class UserReportControl : UserControl
         dgvQuotas = CreateDataGridView();
         tabQuotas.Controls.Add(dgvQuotas);
 
-        panelHeader.BringToFront();
+        // Thêm controls theo thứ tự: Fill trước, Top sau
+        this.Controls.Add(tabControl);
+        this.Controls.Add(panelHeader);
     }
 
     private DataGridView CreateDataGridView()
@@ -146,6 +146,7 @@ public partial class UserReportControl : UserControl
             BorderStyle = BorderStyle.None,
             CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal,
             ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None,
+            ColumnHeadersVisible = true,
             EnableHeadersVisualStyles = false,
             SelectionMode = DataGridViewSelectionMode.FullRowSelect,
             MultiSelect = false,

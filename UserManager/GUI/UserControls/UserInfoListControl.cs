@@ -34,7 +34,6 @@ public partial class UserInfoListControl : UserControl
             Height = 60,
             BackColor = Color.White
         };
-        this.Controls.Add(panelHeader);
 
         // Title
         var lblTitle = new Label
@@ -54,7 +53,6 @@ public partial class UserInfoListControl : UserControl
             Height = 50,
             BackColor = Color.FromArgb(248, 248, 248)
         };
-        this.Controls.Add(panelToolbar);
 
         // Search TextBox
         txtSearch = new TextBox
@@ -107,6 +105,7 @@ public partial class UserInfoListControl : UserControl
             BorderStyle = BorderStyle.None,
             CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal,
             ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None,
+            ColumnHeadersVisible = true,
             EnableHeadersVisualStyles = false,
             SelectionMode = DataGridViewSelectionMode.FullRowSelect,
             MultiSelect = false,
@@ -135,10 +134,10 @@ public partial class UserInfoListControl : UserControl
 
         dgvUserInfo.CellDoubleClick += (s, e) => EditUserInfo();
 
+        // Thêm controls theo thứ tự: Fill trước, Top sau
         this.Controls.Add(dgvUserInfo);
-
-        panelToolbar.BringToFront();
-        panelHeader.BringToFront();
+        this.Controls.Add(panelToolbar);
+        this.Controls.Add(panelHeader);
     }
 
     private DataTable? _originalData;
